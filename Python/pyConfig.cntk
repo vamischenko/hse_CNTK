@@ -1,0 +1,26 @@
+
+command = WrieOtput
+
+makeMode = false ; traceLevel = 0 ; deviceId = "auto"
+
+rootDir = "." ; dataDir  = "$rootDir$" ; modelDir = "$rootDir$/Models"
+
+modelPath = "$modelDir$/slu.cmf"
+
+vocabSize = 943 ; numLabels = 129 ; numIntents = 26    # number of words in vocab, slot labels, and intent labels
+
+
+WrieOtput = {
+    action = "write"
+    modelPath = $modelPath$
+	outputPath = $rootDir$/pyOutput.ctf
+	
+    reader = {
+        readerType = "CNTKTextFormatReader"
+        file = "pyInput.ctf"
+        randomize = false
+        input = {
+            query        = { alias = "S0" ; dim = $vocabSize$ ;  format = "sparse" }
+        }
+    }
+}
