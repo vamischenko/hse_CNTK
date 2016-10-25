@@ -1,0 +1,76 @@
+# CNTK Configuration File for creating a slot tagger and an intent tagger.
+
+command = TrainTaggerSentence
+
+makeMode = false ; traceLevel = 0 ; deviceId = "auto"
+
+rootDir = "." ; dataDir  = "$rootDir$" ; modelDir = "$rootDir$/Models"
+
+modelPath = "$modelDir$/slu_sentence_tagging.cmf"
+
+vocabSize = 943 ; numLabels = 129 ; numIntents = 26    # number of words in vocab, slot labels, and intent labels
+
+# The command to train the LSTM model
+TrainTaggerSentence = {
+    action = "train"
+    BrainScriptNetworkBuilder = {
+        inputDim  = $vocabSize$
+        intentDim = $numIntents$
+        embDim = 150
+        hiddenDim = 150
+
+        BiRecurrentLSTMLayer {outDim} = {
+            F = RecurrentLSTMLayer {outDim, goBackwards=false}
+            G = RecurrentLSTMLayer {outDim, goBackwards=true}
+            apply (x) = Splice (BS.Sequences.Last(F(x)):BS.Sequences.First(G(x)))
+        }.apply
+
+        model = Sequential (
+            EmbeddingLayer {embDim} :
+            BiRecurrentLSTMLayer {hiddenDim} :
+            DenseLayer {intentDim, initValueScale=7}
+        )
+
+        # features
+        n = DynamicAxis()
+        query        = Input {inputDim, dynamicAxis=n}
+        intentLabels = Input {intentDim}
+
+        # model application
+        z = model (query)
+		outputs = Hardmax(z)
+
+        # loss and metric
+        ce   = CrossEntropyWithSoftmax (intentLabels, z)
+        errs = ErrorPrediction         (intentLabels, z)
+
+        featureNodes    = (query)
+        labelNodes      = (intentLabels)
+        criterionNodes  = (ce)
+        evaluationNodes = (errs)
+        outputNodes     = (outputs)
+    }
+
+    SGD = {
+        maxEpochs = 20 ; epochSize = 36000
+
+        minibatchSize = 800
+
+        learningRatesPerSample = 0.01*2:0.005*12:0.001
+        gradUpdateType = "FSAdaGrad"
+        gradientClippingWithTruncation = true ; clippingThresholdPerSample = 15.0
+
+        firstMBsToShowResult = 10 ; numMBsToShowResult = 100
+    }
+
+    reader = {
+        readerType = "CNTKTextFormatReader"
+        file = "$DataDir$/atis.all.ctf"
+        randomize = true
+        input = {
+            query        = { alias = "S0" ; dim = $vocabSize$ ;  format = "sparse" }
+            intentLabels = { alias = "S1" ; dim = $numIntents$ ; format = "sparse" }
+            slotLabels   = { alias = "S2" ; dim = $numLabels$ ;  format = "sparse" }
+        }
+    }
+}
