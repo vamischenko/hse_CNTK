@@ -4,10 +4,10 @@
 
 Обучение модели:
 
-* CNTK.exe configFile=./SLUSentence.cntk
-* CNTK.exe configFile=./SLUWord.cntk
+1. CNTK.exe configFile=./SLUSentence.cntk
+2. CNTK.exe configFile=./SLUWord.cntk
 
 Запуск скрипта:
 
-* python ATIS.py
-* Вводите любое предложение на английском языке (лучше про авиаперевозки).
+1. python ATIS.py
+2. Вводите любое предложение на английском языке (лучше про авиаперевозки).
