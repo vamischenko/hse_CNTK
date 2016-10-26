@@ -74,7 +74,7 @@ with open("pyOutputWordTags.ctf.outputs") as file:
 print("This sentence is about " + types[str(type_index)] + ".")
 
 i = 0
-print("Word:", "\t\t\t", "tag:")
+print("{0:<20}{1:<20}".format("Word: ", "Tag:"))
 for word in sentence:
-    print(word, '\t\t\t', word_tags[i])
+    print("{0:<20}{1:<20}".format(word, word_tags[i]))
     i += 1
