@@ -1,0 +1,57 @@
+CNTK 1.7.2 (HEAD d1ad5f, Oct  1 2016 14:16:55) on probook at 2016/10/26 15:09:51
+
+C:\Users\user\CNTK-1-7-2-Windows-64bit-CPU-Only\cntk\cntk\CNTK.exe  configFile=./SLUHandsOnLookAhead.cntk
+Redirecting stderr to file ./LookAhead.log
+CNTK 1.7.2 (HEAD d1ad5f, Oct  1 2016 14:16:55) on probook at 2016/10/26 15:09:51
+
+C:\Users\user\CNTK-1-7-2-Windows-64bit-CPU-Only\cntk\cntk\CNTK.exe  configFile=./SLUHandsOnLookAhead.cntk
+
+##############################################################################
+#                                                                            #
+# TrainTagger command (train action)                                         #
+#                                                                            #
+##############################################################################
+
+Node 'model.arrayOfFunctions[0].E' (LearnableParameter operation) operation: Tensor shape was inferred as [150 x 943].
+Node 'model.arrayOfFunctions[2].lstm.W' (LearnableParameter operation) operation: Tensor shape was inferred as [1200 x 300].
+Node 'model.arrayOfFunctions[3].arrayOfFunctions[0].W' (LearnableParameter operation) operation: Tensor shape was inferred as [129 x 300].
+
+Model has 34 nodes. Using CPU.
+
+Training criterion:   ce = CrossEntropyWithSoftmax
+Evaluation criterion: errs = ClassificationError
+
+Training 901479 parameters in 6 parameter tensors.
+
+Finished Epoch[ 1 of 20]: [Training] ce = 0.33069609 * 36007; errs = 6.696% * 36007; totalSamplesSeen = 36007; learningRatePerSample = 0.0099999998; epochTime=17.2768s
+Finished Epoch[ 2 of 20]: [Training] ce = 0.09115551 * 36001; errs = 1.983% * 36001; totalSamplesSeen = 72008; learningRatePerSample = 0.0099999998; epochTime=20.6102s
+Finished Epoch[ 3 of 20]: [Training] ce = 0.04097685 * 36005; errs = 0.900% * 36005; totalSamplesSeen = 108013; learningRatePerSample = 0.0049999999; epochTime=20.6941s
+Finished Epoch[ 4 of 20]: [Training] ce = 0.03546636 * 35997; errs = 0.908% * 35997; totalSamplesSeen = 144010; learningRatePerSample = 0.0049999999; epochTime=20.7548s
+Finished Epoch[ 5 of 20]: [Training] ce = 0.01812846 * 36000; errs = 0.464% * 36000; totalSamplesSeen = 180010; learningRatePerSample = 0.0049999999; epochTime=20.3921s
+Finished Epoch[ 6 of 20]: [Training] ce = 0.01564930 * 35999; errs = 0.419% * 35999; totalSamplesSeen = 216009; learningRatePerSample = 0.0049999999; epochTime=19.8848s
+Finished Epoch[ 7 of 20]: [Training] ce = 0.01236444 * 35997; errs = 0.364% * 35997; totalSamplesSeen = 252006; learningRatePerSample = 0.0049999999; epochTime=24.2602s
+Finished Epoch[ 8 of 20]: [Training] ce = 0.00836715 * 36018; errs = 0.242% * 36018; totalSamplesSeen = 288024; learningRatePerSample = 0.0049999999; epochTime=22.2411s
+Finished Epoch[ 9 of 20]: [Training] ce = 0.00547827 * 35980; errs = 0.153% * 35980; totalSamplesSeen = 324004; learningRatePerSample = 0.0049999999; epochTime=20.3977s
+Finished Epoch[10 of 20]: [Training] ce = 0.00390860 * 35996; errs = 0.111% * 35996; totalSamplesSeen = 360000; learningRatePerSample = 0.0049999999; epochTime=22.8709s
+Finished Epoch[11 of 20]: [Training] ce = 0.00405975 * 36024; errs = 0.125% * 36024; totalSamplesSeen = 396024; learningRatePerSample = 0.0049999999; epochTime=23.5874s
+Finished Epoch[12 of 20]: [Training] ce = 0.00390403 * 35984; errs = 0.081% * 35984; totalSamplesSeen = 432008; learningRatePerSample = 0.0049999999; epochTime=21.5949s
+Finished Epoch[13 of 20]: [Training] ce = 0.00234102 * 36006; errs = 0.044% * 36006; totalSamplesSeen = 468014; learningRatePerSample = 0.0049999999; epochTime=21.9001s
+Finished Epoch[14 of 20]: [Training] ce = 0.00112903 * 35987; errs = 0.019% * 35987; totalSamplesSeen = 504001; learningRatePerSample = 0.0049999999; epochTime=24.9559s
+Finished Epoch[15 of 20]: [Training] ce = 0.00202035 * 36001; errs = 0.047% * 36001; totalSamplesSeen = 540002; learningRatePerSample = 0.001; epochTime=20.588s
+Finished Epoch[16 of 20]: [Training] ce = 0.00083449 * 36017; errs = 0.014% * 36017; totalSamplesSeen = 576019; learningRatePerSample = 0.001; epochTime=22.358s
+Finished Epoch[17 of 20]: [Training] ce = 0.00077364 * 35991; errs = 0.014% * 35991; totalSamplesSeen = 612010; learningRatePerSample = 0.001; epochTime=20.04s
+Finished Epoch[18 of 20]: [Training] ce = 0.00084647 * 36001; errs = 0.019% * 36001; totalSamplesSeen = 648011; learningRatePerSample = 0.001; epochTime=25.3534s
+Finished Epoch[19 of 20]: [Training] ce = 0.00046580 * 36002; errs = 0.006% * 36002; totalSamplesSeen = 684013; learningRatePerSample = 0.001; epochTime=20.288s
+Finished Epoch[20 of 20]: [Training] ce = 0.00062325 * 35988; errs = 0.011% * 35988; totalSamplesSeen = 720001; learningRatePerSample = 0.001; epochTime=20.999s
+
+
+##############################################################################
+#                                                                            #
+# TestTagger command (eval action)                                           #
+#                                                                            #
+##############################################################################
+
+evalNodeNames are not specified, using all the default evalnodes and training criterion nodes.
+Final Results: Minibatch[1-1]: errs = 1.921% * 10984; ce = 0.15890896 * 10984; perplexity = 1.17223123
+
+COMPLETED.
