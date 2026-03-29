@@ -1,0 +1,12 @@
+# Временные файлы конвейера ATIS.py (CNTK)
+Python/pyInput.ctf
+Python/pyOutputSentenceTags.ctf*
+Python/pyOutputWordTags.ctf*
+
+__pycache__/
+*.py[cod]
+.Python
+*.so
+.venv/
+venv/
+.env

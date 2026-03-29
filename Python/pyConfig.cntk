@@ -1,19 +1,19 @@
 
-command = WrieOtputSentence:WrieOtputWord
+command = WriteOutputSentence:WriteOutputWord
 
 makeMode = false ; traceLevel = 0 ; deviceId = "auto"
 
 rootDir = "." ; dataDir  = "$rootDir$" ; modelDir = "$rootDir$/Models"
 
-modelPathSetence = "$modelDir$/slu_sentence_tagging.cmf"
+modelPathSentence = "$modelDir$/slu_sentence_tagging.cmf"
 modelPathWord = "$modelDir$/slu_word_tagging.cmf"
 
 vocabSize = 943 ; numLabels = 129 ; numIntents = 26    # number of words in vocab, slot labels, and intent labels
 
 
-WrieOtputSentence = {
+WriteOutputSentence = {
     action = "write"
-    modelPath = $modelPathSetence$
+    modelPath = $modelPathSentence$
 	outputPath = $rootDir$/pyOutputSentenceTags.ctf
 	
     reader = {
@@ -28,7 +28,7 @@ WrieOtputSentence = {
     }
 }
 
-WrieOtputWord = {
+WriteOutputWord = {
     action = "write"
     modelPath = $modelPathWord$
 	outputPath = $rootDir$/pyOutputWordTags.ctf

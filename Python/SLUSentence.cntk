@@ -65,7 +65,7 @@ TrainTaggerSentence = {
 
     reader = {
         readerType = "CNTKTextFormatReader"
-        file = "$DataDir$/atis.all.ctf"
+        file = "$dataDir$/atis.all.ctf"
         randomize = true
         input = {
             query        = { alias = "S0" ; dim = $vocabSize$ ;  format = "sparse" }
